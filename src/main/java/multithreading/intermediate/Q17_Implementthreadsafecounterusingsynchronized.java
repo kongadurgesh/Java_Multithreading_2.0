@@ -1,6 +1,6 @@
 package multithreading.intermediate;
 
-public class Q11_Synchronizemethodtopreventracecondition {
+public class Q17_Implementthreadsafecounterusingsynchronized {
     public static void main(String[] args) throws InterruptedException {
         Counter counter = new Counter();
         Runnable task = () -> {
@@ -21,8 +21,10 @@ public class Q11_Synchronizemethodtopreventracecondition {
 class Counter {
     private int counter;
 
-    public synchronized void increment() {
-        counter++;
+    public void increment() {
+        synchronized (this) {
+            counter++;
+        }
     }
 
     public int getCounter() {
